@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainoBEIYs.ui'
+## Form generated from reading UI file 'mainxjLbBv.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(800, 583)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -84,18 +84,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton.setAutoDefault(False)
-        self.stackedWidget = QStackedWidget(self.frame)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setGeometry(QRect(50, 360, 661, 191))
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.stackedWidget.addWidget(self.page)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.stackedWidget.addWidget(self.page_2)
         self.label_title_2 = QLabel(self.frame)
         self.label_title_2.setObjectName(u"label_title_2")
-        self.label_title_2.setGeometry(QRect(90, 290, 551, 51))
+        self.label_title_2.setGeometry(QRect(110, 290, 551, 51))
         self.label_title_2.setFont(font)
         self.label_title_2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.443, x2:1, y2:0.466, stop:0 rgba(0, 68, 99, 255), stop:1 rgba(0, 29, 42, 255));\n"
 "color: rgb(17, 204, 221);")
@@ -133,6 +124,9 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.pushButton_3.setAutoDefault(False)
+        self.display_label = QLabel(self.frame)
+        self.display_label.setObjectName(u"display_label")
+        self.display_label.setGeometry(QRect(90, 360, 601, 181))
 
         self.verticalLayout.addWidget(self.frame)
 
@@ -152,5 +146,6 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"Current Word", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"NEXT WORD", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PREVIOUS WORD", None))
+        self.display_label.setText("")
     # retranslateUi
 

@@ -1,4 +1,4 @@
-@@ -1,104 +0,0 @@
+#@@ -1,104 +0,0 @@
 import sys
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
