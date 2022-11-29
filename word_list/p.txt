@@ -9,7 +9,7 @@ painter
 painting
 pair
 pale
-Palestinian
+palestinian
 palm
 pan
 panel
@@ -41,7 +41,7 @@ pattern
 pause
 pay
 payment
-PC
+pc
 peace
 peak
 peer

@@ -164,7 +164,7 @@ try
 tube
 tunnel
 turn
-TV
+tv
 twelve
 twenty
 twice

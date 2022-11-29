@@ -30,7 +30,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="input_word">
        <property name="geometry">
         <rect>
          <x>60</x>
@@ -69,7 +69,7 @@ QLineEdit:focus{
         <string>Input Words Here</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_title">
+      <widget class="QLabel" name="precision_search">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -94,7 +94,7 @@ QLineEdit:focus{
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="analyze_button">
        <property name="geometry">
         <rect>
          <x>590</x>
@@ -141,7 +141,7 @@ QLineEdit:focus{
        <widget class="QWidget" name="page"/>
        <widget class="QWidget" name="page_2"/>
       </widget>
-      <widget class="QLabel" name="label_title_2">
+      <widget class="QLabel" name="suggustion_title">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -167,7 +167,7 @@ color: rgb(17, 204, 221);</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="current_word">
        <property name="geometry">
         <rect>
          <x>280</x>
@@ -189,7 +189,7 @@ color: rgb(17, 204, 221);</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="next_button">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -224,7 +224,7 @@ color: rgb(17, 204, 221);</string>
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="previous_button">
        <property name="geometry">
         <rect>
          <x>70</x>
