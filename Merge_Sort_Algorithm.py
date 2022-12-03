@@ -1,8 +1,5 @@
 def search_algorithm(input_word):
     list = possible_list(input_word)
-    input_letters = []
-    #for letters in input_word:
-        #input_letters.append(letters)
 
     y = 0
     for y in list:
@@ -66,3 +63,42 @@ def suggustion(word, list_of_possible_words):
 
         correction+=1
     return top_4_words
+
+
+def analyze(input_variable):
+    y = 0
+    for letters in input_variable:
+        letters = letters.lower()
+        if ord(letters) == 39:
+            apostrophe = input_variable[y:y + 2]
+            input_variable = input_variable.replace(apostrophe, ' ')
+        elif ord(letters) < 96:
+            input_variable = input_variable.replace(input_variable[y], ' ')
+            y += 1
+        elif ord(letters) > 122:
+            input_variable = input_variable.replace(input_variable[y], ' ')
+            y += 1
+        else:
+            y += 1
+
+    list = input_variable.split()
+
+    # print()
+    # print(f'This is the list of inputed words: {list}')
+
+    suggusted_words = {
+
+    }
+
+    incorreect_index = []
+    incorrect_word = []
+
+    for x in list:
+        with open(f'word_list/{x.lower()[0]}.txt', 'r') as file:
+            possible_words = possible_list(x.lower())
+            if search_algorithm(x.lower()) == False:
+                top_4_words = suggustion(x, possible_words)
+                suggusted_words[x] = top_4_words
+                incorrect_word.append(x)
+                incorreect_index.append(list.index(x))
+    return [suggusted_words, incorreect_index, incorrect_word]

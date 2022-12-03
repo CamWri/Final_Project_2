@@ -14,6 +14,7 @@ baggage
 bake
 balance
 ball
+bamboozled
 ban
 bandage
 band
