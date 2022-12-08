@@ -52,7 +52,6 @@ def four_suggested_words(word: str, list_of_possible_words: list) -> list:
     repetition = True
     while repetition:
        similar_words = []
-       #Establish what words equal the correlation value
        for word_list in all_suggusted_word:
            if all_suggusted_word[word_list] == max_coorelation - correction:
                similar_words.append(word_list)
