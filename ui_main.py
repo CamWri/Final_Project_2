@@ -35,16 +35,6 @@ class Ui_MainWindow(object):
 "}")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
-<<<<<<< Updated upstream
-        self.Input = QLineEdit(self.frame)
-        self.Input.setObjectName(u"lineEdit")
-        self.Input.setGeometry(QRect(60, 120, 500, 51))
-        font = QFont()
-        font.setFamily(u"Segoe UI")
-        font.setPointSize(15)
-        self.Input.setFont(font)
-        self.Input.setStyleSheet(u"QLineEdit {\n"
-=======
         self.input_word = QLineEdit(self.frame)
         self.input_word.setObjectName(u"input_word")
         self.input_word.setGeometry(QRect(30, 100, 551, 51))
@@ -53,7 +43,6 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.input_word.setFont(font)
         self.input_word.setStyleSheet(u"QLineEdit {\n"
->>>>>>> Stashed changes
 "	border: 3px solid rgb(0, 108, 154);\n"
 "	border-radius: 12px;\n"
 "	color: rgb(0, 0, 0);\n"
@@ -71,20 +60,6 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(198, 198, 198);\n"
 "}")
-<<<<<<< Updated upstream
-        self.Title = QLabel(self.frame)
-        self.Title.setObjectName(u"label_title")
-        self.Title.setGeometry(QRect(0, 30, 391, 51))
-        font1 = QFont()
-        font1.setFamily(u"Segoe UI")
-        font1.setPointSize(25)
-        self.Title.setFont(font1)
-        self.Title.setStyleSheet(u"color: rgb(66, 255, 161);")
-        self.Title.setAlignment(Qt.AlignCenter)
-        self.Analyze_Button = QPushButton(self.frame)
-        self.Analyze_Button.setObjectName(u"pushButton")
-        self.Analyze_Button.setGeometry(QRect(590, 120, 121, 41))
-=======
         self.precision_search = QLabel(self.frame)
         self.precision_search.setObjectName(u"precision_search")
         self.precision_search.setGeometry(QRect(0, 20, 401, 51))
@@ -97,21 +72,14 @@ class Ui_MainWindow(object):
         self.analyze_button = QPushButton(self.frame)
         self.analyze_button.setObjectName(u"analyze_button")
         self.analyze_button.setGeometry(QRect(590, 110, 121, 41))
->>>>>>> Stashed changes
         font2 = QFont()
         font2.setFamily(u"Segoe UI")
         font2.setPointSize(15)
         font2.setBold(True)
         font2.setWeight(75)
-<<<<<<< Updated upstream
-        self.Analyze_Button.setFont(font2)
-        self.Analyze_Button.clicked.connect(self.analyze) #------------------------------------------------------------------------------
-        self.Analyze_Button.setStyleSheet(u"QPushButton {\n"
-=======
         self.analyze_button.setFont(font2)
         self.analyze_button.clicked.connect(self.button_analyze)
         self.analyze_button.setStyleSheet(u"QPushButton {\n"
->>>>>>> Stashed changes
 "	border: 3px solid rgb(0, 108, 154);\n"
 "	border-radius: 10px;\n"
 "	color: rgb(255, 176, 60);\n"
@@ -120,26 +88,6 @@ class Ui_MainWindow(object):
 "	background-color: rgb(55, 55, 55);\n"
 "}\n"
 "")
-<<<<<<< Updated upstream
-        self.Analyze_Button.setAutoDefault(False)
-        self.Suggested_List = QLabel(self.frame)
-        self.Suggested_List.setObjectName(u"label_title_2")
-        self.Suggested_List.setGeometry(QRect(110, 290, 551, 51))
-        self.Suggested_List.setFont(font)
-        self.Suggested_List.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0.443, x2:1, y2:0.466, stop:0 rgba(0, 68, 99, 255), stop:1 rgba(0, 29, 42, 255));\n"
-"color: rgb(17, 204, 221);")
-        self.Suggested_List.setAlignment(Qt.AlignCenter)
-        self.Current_Word = QLabel(self.frame)
-        self.Current_Word.setObjectName(u"label")
-        self.Current_Word.setGeometry(QRect(280, 210, 231, 51))
-        self.Current_Word.setFont(font1)
-        self.Current_Word.setAlignment(Qt.AlignCenter)
-        self.Next_Button = QPushButton(self.frame)
-        self.Next_Button.setObjectName(u"pushButton_2")
-        self.Next_Button.setGeometry(QRect(540, 220, 151, 41))
-        self.Next_Button.setFont(font2)
-        self.Next_Button.setStyleSheet(u"QPushButton {\n"
-=======
         self.analyze_button.setAutoDefault(False)
         self.analyzed_output = QTextBrowser(self.frame)
         self.analyzed_output.setObjectName(u"stackedWidget")
@@ -161,7 +109,6 @@ class Ui_MainWindow(object):
         self.next_button.setFont(font2)
         self.next_button.clicked.connect(self.next_word)
         self.next_button.setStyleSheet(u"QPushButton {\n"
->>>>>>> Stashed changes
 "	border: 3px solid rgb(0, 108, 154);\n"
 "	border-radius: 10px;\n"
 "	color: rgb(66, 255, 161);\n"
@@ -170,14 +117,6 @@ class Ui_MainWindow(object):
 "	background-color: rgb(55, 55, 55);\n"
 "}\n"
 "")
-<<<<<<< Updated upstream
-        self.Next_Button.setAutoDefault(False)
-        self.Previous_Button = QPushButton(self.frame)
-        self.Previous_Button.setObjectName(u"pushButton_3")
-        self.Previous_Button.setGeometry(QRect(70, 220, 181, 41))
-        self.Previous_Button.setFont(font2)
-        self.Previous_Button.setStyleSheet(u"QPushButton {\n"
-=======
         self.next_button.setAutoDefault(False)
         self.previous_button = QPushButton(self.frame)
         self.previous_button.setObjectName(u"previous_button")
@@ -185,7 +124,6 @@ class Ui_MainWindow(object):
         self.previous_button.setFont(font2)
         self.previous_button.clicked.connect(self.previous_word)
         self.previous_button.setStyleSheet(u"QPushButton {\n"
->>>>>>> Stashed changes
 "	border: 3px solid rgb(0, 108, 154);\n"
 "	border-radius: 10px;\n"
 "	color: rgb(66, 255, 161);\n"
@@ -194,12 +132,6 @@ class Ui_MainWindow(object):
 "	background-color: rgb(55, 55, 55);\n"
 "}\n"
 "")
-<<<<<<< Updated upstream
-        self.Previous_Button.setAutoDefault(False)
-        self.Analyzed_Input = QTextBrowser(self.frame)
-        self.Analyzed_Input.setObjectName(u"display_TextBrowser")
-        self.Analyzed_Input.setGeometry(QRect(90, 360, 601, 181))
-=======
         self.previous_button.setAutoDefault(False)
         self.submit_button = QPushButton(self.frame)
         self.submit_button.setObjectName(u"submit_button")
@@ -239,7 +171,6 @@ class Ui_MainWindow(object):
         self.suggestion_4.setGeometry(QRect(230, 450, 221, 41))
         self.suggestion_4.setFont(font4)
         self.suggestion_4.setStyleSheet(u"color: rgb(255, 255, 255);")
->>>>>>> Stashed changes
 
         self.verticalLayout.addWidget(self.frame)
 
@@ -266,25 +197,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-<<<<<<< Updated upstream
-        self.Input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input Words Here", None))
-        self.Title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">PRECISION</span> | SEARCH</p></body></html>", None))
-        self.Analyze_Button.setText(QCoreApplication.translate("MainWindow", u"ANALYZE", None))
-        self.Suggested_List.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>List Of Suggestions &amp; Possible Replacements</p></body></html>", None))
-        self.Current_Word.setText(QCoreApplication.translate("MainWindow", u"Current Word", None))
-        self.Next_Button.setText(QCoreApplication.translate("MainWindow", u"NEXT WORD", None))
-        self.Previous_Button.setText(QCoreApplication.translate("MainWindow", u"PREVIOUS WORD", None))
-        self.Analyzed_Input.setText("")
-    # retranslateUi
-
-
-
-    def analyze(self):
-        pass
-
-    def submit(self):
-        pass
-=======
         self.input_word.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input Words Here", None))
         self.precision_search.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">PRECISION</span> | SEARCH</p></body></html>", None))
         self.analyze_button.setText(QCoreApplication.translate("MainWindow", u"ANALYZE", None))
@@ -482,4 +394,3 @@ class Ui_MainWindow(object):
             spellchecked_input.append(important_info)
 
             self.next_word()
->>>>>>> Stashed changes
