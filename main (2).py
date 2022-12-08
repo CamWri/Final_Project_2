@@ -21,6 +21,7 @@ class MainWindow(QMainWindow):
         """
         Constructor to open up the Main Window with no title section of the screen and makes the window a floating window.
         :param self: the instance of the __init__ class
+        :return: None
         """
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
