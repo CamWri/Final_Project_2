@@ -2,7 +2,7 @@
 
 def remove_incorrect_characters(input_variable:str) -> str:
     '''
-    Removes all non letters and replaces them with spaces
+    Removes all non letters, spaces, and apostrophes and deletes them
     :param input_variable: the entire input from the user
     :return: returns the entire input from the user, but with only letters allowed
     '''
