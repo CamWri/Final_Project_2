@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #@@ -1,104 +0,0 @@
 import sys
 import platform
@@ -103,3 +104,51 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = LoadingScreen()
     sys.exit(app.exec_())
+=======
+def next_word(self):
+    input = self.input_word.text()
+    analyzed = analyze(input)
+
+    suggusted_words = analyzed[0]
+    incorreect_index = analyzed[1]
+    incorrect_word = analyzed[2]
+
+    current_index = self.addition()
+
+    if len(incorrect_word) > current_index:
+        current_incorrect_word = incorrect_word[current_index]
+        button_1 = suggusted_words[incorrect_word[current_index]][0]
+        button_2 = suggusted_words[incorrect_word[current_index]][1]
+        button_3 = suggusted_words[incorrect_word[current_index]][2]
+        button_4 = suggusted_words[incorrect_word[current_index]][3]
+
+        self.current_word.setText(current_incorrect_word)
+        self.suggestion_1.setText(button_1)
+        self.suggestion_2.setText(button_2)
+        self.suggestion_3.setText(button_3)
+        self.suggestion_4.setText(button_4)
+
+
+def previous_word(self):
+    input = self.input_word.text()
+    analyzed = analyze(input)
+
+    suggusted_words = analyzed[0]
+    incorreect_index = analyzed[1]
+    incorrect_word = analyzed[2]
+
+    current_index = self.subtraction()
+
+    if 0 <= current_index:
+        current_incorrect_word = incorrect_word[current_index]
+        button_1 = suggusted_words[incorrect_word[current_index]][0]
+        button_2 = suggusted_words[incorrect_word[current_index]][1]
+        button_3 = suggusted_words[incorrect_word[current_index]][2]
+        button_4 = suggusted_words[incorrect_word[current_index]][3]
+
+        self.current_word.setText(current_incorrect_word)
+        self.suggestion_1.setText(button_1)
+        self.suggestion_2.setText(button_2)
+        self.suggestion_3.setText(button_3)
+        self.suggestion_4.setText(button_4)
+>>>>>>> Stashed changes
