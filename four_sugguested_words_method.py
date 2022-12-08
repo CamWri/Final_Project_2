@@ -32,10 +32,13 @@ def algorithm_for_suggustions(repetition: bool, similar_words: list, top_4_words
         if len(top_4_words) < 4:
             if words_in_similar[:3] == x[:3]:
                 top_4_words.append(words_in_similar)
-            elif len(words_in_similar) == len(x):
-                top_4_words.append(words_in_similar)
-            elif len(words_in_similar) == len(x) - 1:
-                top_4_words.append(words_in_similar)
+    for words in similar_words:
+        if len(top_4_words) < 4:
+            if words not in top_4_words:
+                if len(words) == len(x):
+                    top_4_words.append(words)
+                elif len(words) == len(x) - 1:
+                    top_4_words.append(words)
         else:
             repetition = False
     return repetition

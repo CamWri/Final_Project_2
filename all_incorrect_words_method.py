@@ -6,20 +6,12 @@ def remove_incorrect_characters(input_variable:str) -> str:
     :param input_variable: the entire input from the user
     :return: returns the entire input from the user, but with only letters allowed
     '''
-    y = 0
     for letters in input_variable:
         letters = letters.lower()
-        if ord(letters) == 39:
-            apostrophe = input_variable[y:y + 2]
-            input_variable = input_variable.replace(apostrophe, ' ')
-        elif ord(letters) < 96:
-            input_variable = input_variable.replace(input_variable[y], ' ')
-            y += 1
-        elif ord(letters) > 122:
-            input_variable = input_variable.replace(input_variable[y], ' ')
-            y += 1
-        else:
-            y += 1
+        if ord(letters) < 96 and ord(letters) != 32 and ord(letters) != 39:
+            input_variable = input_variable.replace(letters, '')
+        elif ord(letters) > 122  and ord(letters) != 32 and ord(letters) != 39:
+            input_variable = input_variable.replace(letters, '')
     return input_variable
 
 

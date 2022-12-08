@@ -208,9 +208,11 @@ class Ui_MainWindow(object):
         self.suggestion_2.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 2", None))
         self.suggestion_3.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 3", None))
         self.suggestion_4.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 4", None))
-        self.analyzed_output.setText(QCoreApplication.translate("MainWindow", "\nInput your text to the above input. Click analyze, then, after seeing your first incorrect word, " +
-        "click on the requested one to replace said wrong word. Then click next to go onto the next word or previous if possible. Do this until you " +
-        "reach the final state, and click submit for your spell checked results! Thanks for using Precision Search, hope this helps and have a great day!" , None))
+        self.analyzed_output.setText(QCoreApplication.translate("MainWindow", "\nWarning! This program only checks spelling of letters and apostrophes. "
+        + "Any misspelled word dealing with any other character(i.e: ! , ?, \", \' . and so many more) will be replaced with the selected word you choose or we can not find the adequate word."
+        + " Once exception is contractions. As long as you have the apostrophe, it should suggust the correct word if spelt incorrectly. To start, input your word or sentence. "
+        +  "Then, click analyze. Click the circular button for the word you want, and if you want none of the requested words, just click next."
+        + " You reach the final page when the submit button becomes the finalize button. Once clicked, it will give you your changes. We suggust single words or sentences.", None))
     # retranslateUi
 
     def button_analyze(self) -> None:
@@ -240,17 +242,16 @@ class Ui_MainWindow(object):
         self.analyzed_output.setHidden(True)
 
         if len(incorrect_word) > 0:
-            current_incorrect_word = incorrect_word[0]
-            button_1 = suggusted_words[incorrect_word[0]][0]
-            button_2 = suggusted_words[incorrect_word[0]][1]
-            button_3 = suggusted_words[incorrect_word[0]][2]
-            button_4 = suggusted_words[incorrect_word[0]][3]
+            suggustion_1 = suggusted_words[incorrect_word[0]][0]
+            suggustion_2 = suggusted_words[incorrect_word[0]][1]
+            suggustion_3 = suggusted_words[incorrect_word[0]][2]
+            suggustion_4 = suggusted_words[incorrect_word[0]][3]
 
-            self.current_word.setText(current_incorrect_word)
-            self.suggestion_1.setText(button_1)
-            self.suggestion_2.setText(button_2)
-            self.suggestion_3.setText(button_3)
-            self.suggestion_4.setText(button_4)
+            self.current_word.setText(incorrect_word[0])
+            self.suggestion_1.setText(suggustion_1)
+            self.suggestion_2.setText(suggustion_2)
+            self.suggestion_3.setText(suggustion_3)
+            self.suggestion_4.setText(suggustion_4)
         else:
             self.current_word.setText('Finalize')
             self.suggestion_1.setHidden(True)
@@ -261,7 +262,7 @@ class Ui_MainWindow(object):
             self.current_word.setHidden(True)
             self.previous_button.setHidden(True)
             self.analyzed_output.setHidden(False)
-            self.analyzed_output.setText(f'Your text is peak performance baby!\n{self.input_word.text()}')
+            self.analyzed_output.setText(f'Your text is perfect!\n{self.input_word.text()}')
             self.submit_button.setHidden(True)
 
     def next_word(self) -> None:
@@ -295,12 +296,19 @@ class Ui_MainWindow(object):
                 self.next_button.setHidden(True)
                 self.current_word.setHidden(True)
                 self.submit_button.setText('Finalize')
+                self.previous_button.setGeometry(QRect(300, 200, 71, 41))
             elif len(incorrect_word) - 1 > word_index:
+                suggustion_1 = suggusted_words[incorrect_word[word_index]][0]
+                suggustion_2 = suggusted_words[incorrect_word[word_index]][1]
+                suggustion_3 = suggusted_words[incorrect_word[word_index]][2]
+                suggustion_4 = suggusted_words[incorrect_word[word_index]][3]
+
+
                 self.current_word.setText(incorrect_word[word_index])
-                self.suggestion_1.setText(suggusted_words[incorrect_word[word_index]][0])
-                self.suggestion_2.setText(suggusted_words[incorrect_word[word_index]][1])
-                self.suggestion_3.setText(suggusted_words[incorrect_word[word_index]][2])
-                self.suggestion_4.setText(suggusted_words[incorrect_word[word_index]][3])
+                self.suggestion_1.setText(suggustion_1)
+                self.suggestion_2.setText(suggustion_2)
+                self.suggestion_3.setText(suggustion_3)
+                self.suggestion_4.setText(suggustion_4)
 
     def previous_word(self) -> None:
         '''
@@ -321,7 +329,11 @@ class Ui_MainWindow(object):
         self.next_button.setHidden(False)
         self.current_word.setHidden(False)
 
+        self.previous_button.setGeometry(QRect(150, 200, 71, 41))
+
         self.analyzed_output.setHidden(True)
+
+        self.submit_button.setText('Submit')
 
         global word_index
 
@@ -333,6 +345,7 @@ class Ui_MainWindow(object):
             self.suggestion_2.setText(suggusted_words[incorrect_word[word_index]][1])
             self.suggestion_3.setText(suggusted_words[incorrect_word[word_index]][2])
             self.suggestion_4.setText(suggusted_words[incorrect_word[word_index]][3])
+
 
     def submit(self) -> None:
         '''
