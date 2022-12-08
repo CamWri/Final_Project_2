@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'loading_screenKaAoXv.ui'
+## Form generated from reading UI file 'loading_screenKNSZoU.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -14,7 +14,13 @@ from PySide2.QtWidgets import *
 
 
 class Ui_LoadingScreen(object):
-    def setupUi(self, LoadingScreen):
+    def setupUi(self, LoadingScreen: None ) -> None:
+        """
+        Constructor that loads up the loading screen correctly
+        :param self: the instance of the __init__ class
+        :param LoadingScreen: The Loading Screen with the progress bar
+        :return: None
+        """
         if not LoadingScreen.objectName():
             LoadingScreen.setObjectName(u"LoadingScreen")
         LoadingScreen.resize(680, 400)
@@ -87,7 +93,13 @@ class Ui_LoadingScreen(object):
         QMetaObject.connectSlotsByName(LoadingScreen)
     # setupUi
 
-    def retranslateUi(self, LoadingScreen):
+    def retranslateUi(self, LoadingScreen: None) -> None:
+        """
+        Constructor that loads up components of the Loading Screen
+        :param self: the instance of the __init__ class
+        :param LoadingScreen: The Loading Screen with the text labels
+        :return: None
+        """
         LoadingScreen.setWindowTitle(QCoreApplication.translate("LoadingScreen", u"MainWindow", None))
         self.label_title.setText(QCoreApplication.translate("LoadingScreen", u"<html><head/><body><p><span style=\" font-weight:600;\">PRECISION</span> | SEARCH</p></body></html>", None))
         self.label_description.setText(QCoreApplication.translate("LoadingScreen", u"THE WORLD'S BEST TYPING ASSISTANT", None))

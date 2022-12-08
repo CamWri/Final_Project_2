@@ -14,7 +14,13 @@ from PySide2.QtWidgets import *
 
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow: None) -> None:
+        """
+        Constructor that loads up the Main Screen correctly
+        :param self: the instance of the __init__ class
+        :param MainWindow: The Main Screen in its default stage
+        :return: None
+        """
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(750, 600)
@@ -180,7 +186,13 @@ class Ui_MainWindow(object):
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, MainWindow: None) -> None:
+        """
+        Constructor that loads up the Main Screen correctly
+        :param self: the instance of the __init__ class
+        :param MainWindow : The Main Screen to it default stage
+        :return: None
+        """
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.input_word.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input Words Here", None))
         self.precision_search.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">PRECISION</span> | SEARCH</p></body></html>", None))

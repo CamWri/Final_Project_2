@@ -1,23 +1,27 @@
-#@@ -1,104 +0,0 @@
+# @@ -1,104 +0,0 @@
 import sys
 import platform
-from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2 import QtCore
+from PySide2.QtGui import QColor
 from PySide2.QtWidgets import *
 
-#This imports the UI design from the Loading Screen
+# This imports the UI design from the Loading Screen
 from ui_loading_screen import Ui_LoadingScreen
 
-#This imports the UI design from the Main Screen
+# This imports the UI design from the Main Screen
 from ui_main import Ui_MainWindow
 
 # Counter for the Percentage
 counter = 0
 
+
 # Main Screen
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self: None) -> None:
+        """
+        Constructor to open up the Main Window with no title section of the screen and makes the window a floating window.
+        :param self: the instance of the __init__ class
+        """
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -27,23 +31,22 @@ class MainWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
 
-
-
-
 # Loading Screen
 class LoadingScreen(QMainWindow):
-    def __init__(self):
+    def __init__(self: None) -> None:
+        """
+        Constructor to open up the Loading Window and the process
+        :param self: the instance of the __init__ class
+        """
         QMainWindow.__init__(self)
         self.ui = Ui_LoadingScreen()
         self.ui.setupUi(self)
 
-    # UI Code
-
+        # UI Code
 
         # This removes the title section of the screen and makes a floating window
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
 
         # Creates drop shadow effect
         self.shadow = QGraphicsDropShadowEffect(self)
@@ -66,15 +69,18 @@ class LoadingScreen(QMainWindow):
 
         # Changes the description of the subtitle after a certain millisecond count
         QtCore.QTimer.singleShot(3000, lambda: self.ui.label_description.setText("<strong>LOADING</strong> DATABASE"))
-        QtCore.QTimer.singleShot(5000, lambda: self.ui.label_description.setText("<strong>LOADING</strong> USER INTERFACE"))
-
+        QtCore.QTimer.singleShot(5000,
+                                 lambda: self.ui.label_description.setText("<strong>LOADING</strong> USER INTERFACE"))
 
         # This causes the main screen to load after the loading screen closes
         self.show()
 
-
     # App functions
-    def progress(self):
+    def progress(self: None) -> None:
+        """
+        Constructor that uses the initial value of the counter until it increments to 100 and opens the Main Window
+        :param self: the instance of the __init__ class
+        """
 
         global counter
 
@@ -95,8 +101,6 @@ class LoadingScreen(QMainWindow):
 
         # increments the counter by 1 until it hits 100.
         counter += 1
-
-
 
 
 if __name__ == "__main__":
