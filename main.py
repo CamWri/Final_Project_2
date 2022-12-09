@@ -1,8 +1,5 @@
-#@@ -1,104 +0,0 @@
 import sys
-import platform
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
@@ -17,7 +14,12 @@ counter = 0
 
 # Main Screen
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self: None) ->None:
+        """
+            Constructor to open up the Main Window with no title section of the screen and makes the window a floating window.
+            :param self: the instance of the __init__ class
+            :return: None
+        """
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -32,7 +34,11 @@ class MainWindow(QMainWindow):
 
 # Loading Screen
 class LoadingScreen(QMainWindow):
-    def __init__(self):
+    def __init__(self: None) -> None:
+        """
+        Constructor to open up the Loading Window and the process
+        :param self: the instance of the __init__ class
+        """
         QMainWindow.__init__(self)
         self.ui = Ui_LoadingScreen()
         self.ui.setupUi(self)
@@ -74,8 +80,11 @@ class LoadingScreen(QMainWindow):
 
 
     # App functions
-    def progress(self):
-
+    def progress(self: None) -> None:
+        """
+        Constructor that uses the initial value of the counter until it increments to 100 and opens the Main Window
+        :param self: the instance of the __init__ class
+        """
         global counter
 
         # Sets the value of the counter to the initial value
