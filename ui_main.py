@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'main_windowvbPLPJ.ui'
-##
-## Created by: Qt User Interface Compiler version 5.15.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -158,19 +148,24 @@ class Ui_MainWindow(object):
         self.suggestion_1.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.suggestion_2 = QRadioButton(self.frame)
         self.suggestion_2.setObjectName(u"suggestion_2")
-        self.suggestion_2.setGeometry(QRect(230, 330, 221, 41))
+        self.suggestion_2.setGeometry(QRect(230, 320, 221, 41))
         self.suggestion_2.setFont(font4)
         self.suggestion_2.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.suggestion_3 = QRadioButton(self.frame)
         self.suggestion_3.setObjectName(u"suggestion_3")
-        self.suggestion_3.setGeometry(QRect(230, 390, 221, 41))
+        self.suggestion_3.setGeometry(QRect(230, 370, 221, 41))
         self.suggestion_3.setFont(font4)
         self.suggestion_3.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.suggestion_4 = QRadioButton(self.frame)
         self.suggestion_4.setObjectName(u"suggestion_4")
-        self.suggestion_4.setGeometry(QRect(230, 450, 221, 41))
+        self.suggestion_4.setGeometry(QRect(230, 420, 221, 41))
         self.suggestion_4.setFont(font4)
         self.suggestion_4.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.suggestion_5 = QRadioButton(self.frame)
+        self.suggestion_5.setObjectName(u"suggestion_5")
+        self.suggestion_5.setGeometry(QRect(230, 460, 221, 41))
+        self.suggestion_5.setFont(font4)
+        self.suggestion_5.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.verticalLayout.addWidget(self.frame)
 
@@ -188,6 +183,7 @@ class Ui_MainWindow(object):
         self.suggestion_2.setHidden(True)
         self.suggestion_3.setHidden(True)
         self.suggestion_4.setHidden(True)
+        self.suggestion_5.setHidden(True)
         self.current_word.setHidden(True)
         self.analyzed_output.setHidden(False)
 
@@ -208,11 +204,10 @@ class Ui_MainWindow(object):
         self.suggestion_2.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 2", None))
         self.suggestion_3.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 3", None))
         self.suggestion_4.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 4", None))
-        self.analyzed_output.setText(QCoreApplication.translate("MainWindow", "\nWarning! This program only checks spelling of letters and apostrophes. "
-        + "Any misspelled word dealing with any other character(i.e: ! , ?, \", \' . and so many more) will be replaced with the selected word you choose or we can not find the adequate word."
-        + " Once exception is contractions. As long as you have the apostrophe, it should suggust the correct word if spelt incorrectly. To start, input your word or sentence. "
-        +  "Then, click analyze. Click the circular button for the word you want, and if you want none of the requested words, just click next."
-        + " You reach the final page when the submit button becomes the finalize button. Once clicked, it will give you your changes. We suggust single words or sentences.", None))
+        self.suggestion_5.setText(QCoreApplication.translate("MainWindow", u"SUGGESTION 5", None))
+        self.analyzed_output.setText(QCoreApplication.translate("MainWindow", "\nWarning! Only letters, apostrophes for contraction (like don't) and spaces. You will not be able to recieve an output if you do not follow this order. "
+        + "For maximum efficieny, input one word or sentence without punctuation. Then click analyze for your sugguested words. Click on the button of the sugguested words and click submit. If you do not want to word to change, click no change."
+        + "When you can only go to the previous word with the Finalze button on the bottom, you have corrected all of the misspelled words. If you click the finalize button, you will get you spell checked input.", None))
     # retranslateUi
 
     def button_analyze(self) -> None:
@@ -228,36 +223,47 @@ class Ui_MainWindow(object):
 
         input = self.input_word.text()
 
-        suggusted_words = all_incorrect_words(input)[0]
-        incorrect_word = all_incorrect_words(input)[2]
+        incorrect_word, incorrect_index, suggusted_words = self.suggusted_and_incorrect_words(input)
 
         self.suggestion_1.setHidden(False)
         self.suggestion_2.setHidden(False)
         self.suggestion_3.setHidden(False)
         self.suggestion_4.setHidden(False)
+        self.suggestion_5.setHidden(False)
         self.submit_button.setHidden(False)
         self.previous_button.setHidden(False)
         self.current_word.setHidden(False)
         self.next_button.setHidden(False)
         self.analyzed_output.setHidden(True)
+        self.previous_button.setGeometry(QRect(150, 200, 71, 41))
+        self.submit_button.setText('Submit')
 
         if len(incorrect_word) > 0:
-            suggustion_1 = suggusted_words[incorrect_word[0]][0]
-            suggustion_2 = suggusted_words[incorrect_word[0]][1]
-            suggustion_3 = suggusted_words[incorrect_word[0]][2]
-            suggustion_4 = suggusted_words[incorrect_word[0]][3]
+
+            suggustion_1 = suggusted_words[incorrect_word[word_index]][0]
+            suggustion_2 = suggusted_words[incorrect_word[word_index]][1]
+            suggustion_3 = suggusted_words[incorrect_word[word_index]][2]
+            suggustion_4 = suggusted_words[incorrect_word[word_index]][3]
+
+            if incorrect_word[word_index][0].isupper():
+                suggustion_1 = suggusted_words[incorrect_word[word_index]][0].capitalize()
+                suggustion_2 = suggusted_words[incorrect_word[word_index]][1].capitalize()
+                suggustion_3 = suggusted_words[incorrect_word[word_index]][2].capitalize()
+                suggustion_4 = suggusted_words[incorrect_word[word_index]][3].capitalize()
 
             self.current_word.setText(incorrect_word[0])
             self.suggestion_1.setText(suggustion_1)
             self.suggestion_2.setText(suggustion_2)
             self.suggestion_3.setText(suggustion_3)
             self.suggestion_4.setText(suggustion_4)
+            self.suggestion_5.setText('No Change')
         else:
             self.current_word.setText('Finalize')
             self.suggestion_1.setHidden(True)
             self.suggestion_2.setHidden(True)
             self.suggestion_3.setHidden(True)
             self.suggestion_4.setHidden(True)
+            self.suggestion_5.setHidden(True)
             self.next_button.setHidden(True)
             self.current_word.setHidden(True)
             self.previous_button.setHidden(True)
@@ -272,13 +278,13 @@ class Ui_MainWindow(object):
         '''
         input = self.input_word.text()
 
-        suggusted_words = all_incorrect_words(input)[0]
-        incorrect_word = all_incorrect_words(input)[2]
+        incorrect_word, incorrect_index, suggusted_words = self.suggusted_and_incorrect_words(input)
 
         self.suggestion_1.setHidden(False)
         self.suggestion_2.setHidden(False)
         self.suggestion_3.setHidden(False)
         self.suggestion_4.setHidden(False)
+        self.suggestion_5.setHidden(False)
         self.submit_button.setHidden(False)
 
         incorrect_word.append('Finalize')
@@ -293,6 +299,7 @@ class Ui_MainWindow(object):
                 self.suggestion_2.setHidden(True)
                 self.suggestion_3.setHidden(True)
                 self.suggestion_4.setHidden(True)
+                self.suggestion_5.setHidden(True)
                 self.next_button.setHidden(True)
                 self.current_word.setHidden(True)
                 self.submit_button.setText('Finalize')
@@ -303,12 +310,18 @@ class Ui_MainWindow(object):
                 suggustion_3 = suggusted_words[incorrect_word[word_index]][2]
                 suggustion_4 = suggusted_words[incorrect_word[word_index]][3]
 
+                if incorrect_word[word_index][0].isupper():
+                    suggustion_1 = suggusted_words[incorrect_word[word_index]][0].capitalize()
+                    suggustion_2 = suggusted_words[incorrect_word[word_index]][1].capitalize()
+                    suggustion_3 = suggusted_words[incorrect_word[word_index]][2].capitalize()
+                    suggustion_4 = suggusted_words[incorrect_word[word_index]][3].capitalize()
 
                 self.current_word.setText(incorrect_word[word_index])
                 self.suggestion_1.setText(suggustion_1)
                 self.suggestion_2.setText(suggustion_2)
                 self.suggestion_3.setText(suggustion_3)
                 self.suggestion_4.setText(suggustion_4)
+                self.suggestion_5.setText('No Change')
 
     def previous_word(self) -> None:
         '''
@@ -317,13 +330,13 @@ class Ui_MainWindow(object):
         '''
         input = self.input_word.text()
 
-        suggusted_words = all_incorrect_words(input)[0]
-        incorrect_word = all_incorrect_words(input)[2]
+        incorrect_word, incorrect_index, suggusted_words = self.suggusted_and_incorrect_words(input)
 
         self.suggestion_1.setHidden(False)
         self.suggestion_2.setHidden(False)
         self.suggestion_3.setHidden(False)
         self.suggestion_4.setHidden(False)
+        self.suggestion_5.setHidden(False)
         self.submit_button.setHidden(False)
         self.previous_button.setHidden(False)
         self.next_button.setHidden(False)
@@ -340,24 +353,34 @@ class Ui_MainWindow(object):
 
         if 0 < word_index:
             word_index -= 1
+
+            suggustion_1 = suggusted_words[incorrect_word[word_index]][0]
+            suggustion_2 = suggusted_words[incorrect_word[word_index]][1]
+            suggustion_3 = suggusted_words[incorrect_word[word_index]][2]
+            suggustion_4 = suggusted_words[incorrect_word[word_index]][3]
+
+            if incorrect_word[word_index][0].isupper():
+                suggustion_1 = suggusted_words[incorrect_word[word_index]][0].capitalize()
+                suggustion_2 = suggusted_words[incorrect_word[word_index]][1].capitalize()
+                suggustion_3 = suggusted_words[incorrect_word[word_index]][2].capitalize()
+                suggustion_4 = suggusted_words[incorrect_word[word_index]][3].capitalize()
+
             self.current_word.setText(incorrect_word[word_index])
-            self.suggestion_1.setText(suggusted_words[incorrect_word[word_index]][0])
-            self.suggestion_2.setText(suggusted_words[incorrect_word[word_index]][1])
-            self.suggestion_3.setText(suggusted_words[incorrect_word[word_index]][2])
-            self.suggestion_4.setText(suggusted_words[incorrect_word[word_index]][3])
+            self.suggestion_1.setText(suggustion_1)
+            self.suggestion_2.setText(suggustion_2)
+            self.suggestion_3.setText(suggustion_3)
+            self.suggestion_4.setText(suggustion_4)
+            self.suggestion_5.setText('No Change')
 
 
     def submit(self) -> None:
         '''
-        Checks to see if the current displayed word is incorrectly spelt words, if equals Finalize(which is manually added correctly spelt control variable), replace all
-        incorrectly spelt words with their sugguested word, and set the spell checked output into the QTextBrowser, and if not the word Finalize, add a list of the suggusted
-        word and the word index for the displayed word. Then it goes calls the next_word method.
+        Establishes what word you selected to the word incorrectly spelt
         :return: None
         '''
         input = self.input_word.text()
 
-        incorrect_index = all_incorrect_words(input)[1]
-        incorrect_word = all_incorrect_words(input)[2]
+        incorrect_word, incorrect_index, suggusted_words = self.suggusted_and_incorrect_words(input)
 
         unchanged_input = input.split()
 
@@ -365,6 +388,7 @@ class Ui_MainWindow(object):
         self.suggestion_2.setHidden(True)
         self.suggestion_3.setHidden(True)
         self.suggestion_4.setHidden(True)
+        self.suggestion_5.setHidden(True)
         self.submit_button.setHidden(True)
 
         if self.current_word.text() == 'Finalize':
@@ -382,7 +406,7 @@ class Ui_MainWindow(object):
 
             finalized_input = ' '.join(unchanged_input)
 
-            self.analyzed_output.setText(f'Your finalized outcome is: \n {finalized_input}')
+            self.analyzed_output.setText(f'Your finalized outcome is:\n{finalized_input}')
 
             self.analyzed_output.setHidden(False)
             self.current_word.setHidden(True)
@@ -399,6 +423,8 @@ class Ui_MainWindow(object):
                 sugguested_word = self.suggestion_3.text()
             elif self.suggestion_4.isChecked():
                 sugguested_word = self.suggestion_4.text()
+            elif self.suggestion_5.isChecked():
+                sugguested_word = incorrect_word[word_index]
             else:
                 sugguested_word = incorrect_word[word_index]
 
@@ -407,3 +433,21 @@ class Ui_MainWindow(object):
             spellchecked_input.append(important_info)
 
             self.next_word()
+
+    def suggusted_and_incorrect_words(self, input: str) -> list:
+        '''
+        Take the suggustion algorithm and estbalishes values for suggusted words, incorret indexs, and incorrect words
+        :param input: a word from the users input
+        :return: Returns
+        '''
+        try:
+            suggusted_words = all_incorrect_words(input)[0]
+            incorrect_index = all_incorrect_words(input)[1]
+            incorrect_word = all_incorrect_words(input)[2]
+        except ValueError:
+            self.analyzed_output.setText('Only input letters and spaces.')
+        except RuntimeError:
+            self.analyzed_output.setText('Either the word does not have four adequate suggustions or your input is to long. If possible, break up your input into words and/or delete long and complex words.')
+        except:
+            self.analyzed_output.setText('Something went wrong. If possible, break up your input into words or change your input to see our results')
+        return incorrect_word,incorrect_index, suggusted_words

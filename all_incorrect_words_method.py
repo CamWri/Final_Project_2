@@ -2,16 +2,15 @@
 
 def remove_incorrect_characters(input_variable:str) -> str:
     '''
-    Removes all non letters, spaces, and apostrophes and deletes them
+    Raises exceptions for non-letters except apostrophes and spaces
     :param input_variable: the entire input from the user
     :return: returns the entire input from the user, but with only letters allowed
     '''
-    for letters in input_variable:
-        letters = letters.lower()
-        if ord(letters) < 96 and ord(letters) != 32 and ord(letters) != 39:
-            input_variable = input_variable.replace(letters, '')
-        elif ord(letters) > 122  and ord(letters) != 32 and ord(letters) != 39:
-            input_variable = input_variable.replace(letters, '')
+    incorrect_characters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '-', '\"', '.', '!', '?', '/', '(', ')', '[', ']', '#', '&']
+    for characters in input_variable:
+        if characters in incorrect_characters:
+            input_variable = ''
+            raise ValueError
     return input_variable
 
 

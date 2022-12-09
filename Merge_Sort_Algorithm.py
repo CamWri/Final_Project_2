@@ -19,13 +19,14 @@ def all_incorrect_words(input_variable: str) -> list:
     incorrect_word = []
 
     for x in list:
+        y = x
         with open(f'word_list/{x.lower()[0]}.txt', 'r') as file:
             possible_words = all_possible_words(x.lower())
             if word_exists(x.lower()) == False:
-                top_4_words = four_suggested_words(x, possible_words)
-                suggusted_words[x] = top_4_words
-                incorrect_word.append(x)
-                incorreect_index.append(list.index(x))
+                top_4_words = four_suggested_words(y, possible_words)
+                suggusted_words[y] = top_4_words
+                incorrect_word.append(y)
+                incorreect_index.append(list.index(y))
 
     return [suggusted_words, incorreect_index, incorrect_word]
 
